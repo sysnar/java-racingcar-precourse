@@ -17,6 +17,14 @@ public class Cars {
         return new Cars(names);
     }
 
+    public List<Integer> generateRandomNumbers() {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < size(); i++) {
+            numbers.add(RandomNumber.makeNumber());
+        }
+        return numbers;
+    }
+
     public void move(List<Integer> randomNumbers) {
         for (int i = 0; i < cars.size(); i++) {
             cars.get(i).move(randomNumbers.get(i));
@@ -35,6 +43,10 @@ public class Cars {
         return result;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private List<Car> generateCars(List<String> names) {
         List<Car> temp = new ArrayList<>();
         for (String name : names) {
@@ -47,5 +59,14 @@ public class Cars {
         if (new HashSet<>(names).size() != names.size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 자동차명이 존재합니다");
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer result = new StringBuffer();
+        for (Car car : cars) {
+            result.append(car.toString() + "\n");
+        }
+        return result.toString();
     }
 }

@@ -22,4 +22,17 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return name + " : " + getPositionStatus();
+    }
+
+    private String getPositionStatus() {
+        StringBuffer status = new StringBuffer();
+        for (int i = 0; i < position; i++) {
+            status.append("-");
+        }
+        return status.toString();
+    }
 }
